@@ -1,0 +1,63 @@
+.header {
+    background-color: rgb(43, 43, 44);
+    color: white;
+    font-size: 12px;
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase; 
+    position: relative;
+    display: flex;
+}
+
+.search {
+    position: relative;
+    display: inline-block;
+    padding: 15px;
+}
+
+.sign-up {
+    position: relative;
+    margin-left: auto;
+    display: inline-block;
+    transition: .5s;
+    padding: 15px;
+}
+
+.login {
+    position: relative;
+    display: inline-block;
+    transition: .5s;
+    padding: 15px;
+}
+
+.sign-up:hover {
+    color: rgb(43, 43, 44);
+    background: white;
+}
+
+.login:hover {
+   color: rgb(43, 43, 44);
+   background: white;
+}
+
+/* Test Logo */
+.logo {
+    position: relative;
+    text-align: center;
+    padding: 10px;
+}
+
+#cn-logo {
+    height: 100px;
+    margin: 0 auto;
+}
+
+.weather {
+    font-size: 15px;
+    padding: 10px;
+    text-align: center;
+    border-top: 1.5pt solid rgb(43, 44, 45);
+    border-bottom: 1.5pt solid rgb(43, 44, 45);
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+}
+
