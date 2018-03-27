@@ -11,7 +11,7 @@ var connection;
 //             user: 'root',
 //             password: ''
 //         });
-//         connectoin.connect();
+//         connection.connect();
 
 //         //create database
 //         connection.query('create database goatjs', function(err){
