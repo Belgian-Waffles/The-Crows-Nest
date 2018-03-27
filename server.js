@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var PORT = process.env.PORT || 8080;
 var app = express();
 var routes = ("./routes");
-var user = requier('./routes/user'),;
+var user = require('./routes/user');
 var db = require('./models');
 var http = require('http');
 var passport = require('passport');
@@ -50,7 +50,7 @@ app.post('/authenticate',
         failureRedirect: '/'
     })
 )
-app,get('/logout', application.destroySession)
+app.get('/logout', application.destroySession)
 app.get('/signup', user.signUp)
 app.post('/register', user.register)
 
@@ -63,7 +63,7 @@ db
         }
         else {
             //From this point to the next commented section, delete this code for production, this is only to test authentication
-            dp.User.fid({where: {username: 'admin'}}).success(function (user){
+            dp.User.find({where: {username: 'admin'}}).success(function (user){
                 if (!user) {
                     db.User.build({username: 'admin', password: 'admin'}).save();
                 }

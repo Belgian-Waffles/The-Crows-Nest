@@ -1,5 +1,5 @@
 var fs = require('fs'),
-    path = requier('path')
+    path = require('path')
     Sequelize = require('sequelize')
     lodash = require('lodash')
     sequelize = new Sequelize('goatjs', 'root', null),

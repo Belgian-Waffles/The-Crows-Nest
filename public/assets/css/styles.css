@@ -20,6 +20,9 @@
     display: inline-block;
     transition: .5s;
     padding: 15px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(43, 43, 44);
 }
 
 .login {
@@ -27,17 +30,22 @@
     display: inline-block;
     transition: .5s;
     padding: 15px;
+    color: white;
+    text-decoration: none;
 }
 
 .sign-up:hover {
     color: rgb(43, 43, 44);
     background: white;
+    text-decoration: none;
 }
 
 .login:hover {
    color: rgb(43, 43, 44);
    background: white;
+   text-decoration: none;
 }
+
 
 /* Test Logo */
 .logo {

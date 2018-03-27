@@ -7,8 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css" media="screen" title="no title">
+    <link rel="stylesheet" href="assets/css/reset.css" media="screen" title="no title">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="app.js">
     <link href="https://fonts.googleapis.com/css?family=Allan:700|Cabin:700|Josefin+Sans:700" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
     <title>Home 2</title>
@@ -18,8 +20,8 @@
     <div class="container-fluid">
         <div class="row header">
             <div class="search"><i class="fas fa-search"></i> Search</div>
-            <div class="sign-up">Sign Up</div>
-            <div class="login">Login</div>
+            <div class="sign-up"><button id="sign-up">Sign Up</button></div>
+            <a href="#" class="login"><div id="login">Login</div></a>
         </div>
         <div class="row logo">
             <div class="logo">
@@ -29,8 +31,43 @@
         <div class="row weather">
             This would be weather
         </div>
+        
+        <form action="#">
+            User Name:
+            <input id="user-name" name="username" type="text">
+            <br><br>
+            Password:
+            <input id="password" name="password" type="text">
+            <br><br>
+            City:
+            <input id="city" name="city" type="text">
+            <br><br>
+            State:
+            <input id="state" name="state" type="text">
+            <input id="user-info-submit" type="submit">
+          </form>
     </div>
 
 </body>
+
+<script type="text/javascript">
+    $( document ).ready(function(){
+    $("#user-info-submit").on("click", function(event){
+        event.preventDefault();
+        console.log("hi");
+
+        var userInfo = {
+            name: $("#user-name").val(),
+            password: $("#password").val(),
+            city: $("#city").val(),
+            state: $("#state").val()
+        }
+
+        $.post("/register", userInfo).then(function(data){
+            console.log(data);
+        })
+    })
+})
+</script>
 
 </html>
