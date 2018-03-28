@@ -6,6 +6,27 @@
     text-transform: uppercase; 
     position: relative;
     display: flex;
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:focus {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:visited {
+    text-decoration: none;
+    color: inherit;
 }
 
 .search {
@@ -44,6 +65,84 @@
    color: rgb(43, 43, 44);
    background: white;
    text-decoration: none;
+}
+
+/* Catgories Tab */
+.categories {
+    margin-top: 2%;
+    padding-right: 0;
+}
+
+#top-category {
+    border-top: none;
+}
+
+.category {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+    padding: 20px 0 20px 0; 
+    border-top: 1pt solid rgb(43, 43, 44);
+}
+
+/* Article CSS */
+.news-container {
+    background-color: rgb(241, 241, 241);
+    padding: 0 2% 2% 2%;
+}
+.article {
+    background-color: white;
+    border-radius: 10px;
+    width: 29%;
+    margin-left: 2%;
+    margin-right: 2%;
+    position: relative;
+    display: inline-block;
+    margin-top: 2%;
+    transform: scale(.96);
+    box-shadow: none;
+
+    transition: .2s;
+}
+
+.article:hover {
+    transform: scale(1);
+    box-shadow: 7px 10px 18px 1px rgba(173, 173, 173, 0.5);
+}
+
+.article-title {
+    font-family: 'Cabin', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    background-color: rgb(83, 139, 161);
+    color: white;
+}
+
+.article-image {
+    width: 100%;
+    position: relative;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.article-description {
+    padding: 15px;
+    font-family: 'Cabin', sans-serif;
+    font-weight: 500;
+}
+
+.article-author {
+    padding: 15px;
+    font-family: 'Cabin', sans-serif;
+    font-size: 12px;
+    text-align: right;
 }
 
 

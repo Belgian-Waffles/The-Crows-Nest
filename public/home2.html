@@ -11,28 +11,70 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="app.js">
-    <link href="https://fonts.googleapis.com/css?family=Allan:700|Cabin:700|Josefin+Sans:700" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Allan:700|Cabin:500,700|Josefin+Sans:700" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
+        crossorigin="anonymous"></script>
     <title>Home 2</title>
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="row header">
-            <div class="search"><i class="fas fa-search"></i> Search</div>
-            <div class="sign-up"><button id="sign-up">Sign Up</button></div>
-            <a href="#" class="login"><div id="login">Login</div></a>
+            <div class="search">
+                <i class="fas fa-search"></i> Search</div>
+            <div class="sign-up">
+                <div id="login">Sign Up</div>
+            </div>
+            <a href="#" class="login">
+                <div id="login">Login</div>
+            </a>
         </div>
         <div class="row logo">
             <div class="logo">
-                <img src="assets/images/cn-logo-gray.png" alt="Crows Nest" id="cn-logo">
+                <img src="assets/images/cn2-01.svg" alt="Crows Nest" id="cn-logo">
             </div>
         </div>
         <div class="row weather">
             This would be weather
         </div>
-        
-        <form action="#">
+    </div>
+
+    <div class="container-fluid news-container">
+        <div class="row">
+            <div class="col-md-2 categories">
+                <ul>
+                    <li class="category" id="top-category">
+                        <a class="category-link" href="#">Technology</a>
+                    </li>
+                    <li class="category">
+                        <a class="category-link" href="#">Sports</a>
+                    </li>
+                    <li class="category">
+                        <a class="category-link" href="#">Business</a>
+                    </li>
+                    <li class="category">
+                        <a class="category-link" href="#">Politics</a>
+                    </li>
+                    <li class="category">
+                        <a class="category-link" href="#">Environment</a>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-md-10 news-articles">
+                <div class="article">
+                    <div class="article-title">Title</div>
+                    <div class="article-image">
+                        <img src="https://images.wsj.net/im-5296/social" alt="">
+                    </div>
+                    <div class="article-description">Description of the article will go here</div>
+                    <div class="article-author">By: Author</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <form action="#">
             User Name:
             <input id="user-name" name="username" type="text">
             <br><br>
@@ -45,29 +87,159 @@
             State:
             <input id="state" name="state" type="text">
             <input id="user-info-submit" type="submit">
-          </form>
-    </div>
+          </form> -->
 
 </body>
 
 <script type="text/javascript">
-    $( document ).ready(function(){
-    $("#user-info-submit").on("click", function(event){
-        event.preventDefault();
-        console.log("hi");
+    $(document).ready(function () {
+        // $.ajax({
+        //     url: "https://newsapi.org/v2/top-headlines?country=us&apiKey=79f8ff2b4224420c9ac71e5174746823",
+        //     method: "GET"
+        // }).then(function (data) {
+        //     console.log(data);
+        //     var newsData = data.articles
+        //     console.log(newsData);
+        //     console.log("2");
+        //     for (i = 0; i < newsData.length; i++) {
+        //         console.log("3");
+        //         var title = newsData[i].title;
+        //         var description = newsData[i].description;
+        //         var author = newsData[i].author;
+        //         var articleImage = newsData[i].urlToImage;
+        //         var articleLink = newsData[i].url;
+        //         var emptyImage = $("<img>").attr("src", "https://qph.fs.quoracdn.net/main-qimg-82907bfea9fe97e84861e2ee7c5b4f5b");
 
-        var userInfo = {
-            name: $("#user-name").val(),
-            password: $("#password").val(),
-            city: $("#city").val(),
-            state: $("#state").val()
-        }
+        //         // Creating new article div
+        //         var newArticle = $("<div>").addClass("article");
 
-        $.post("/register", userInfo).then(function(data){
-            console.log(data);
+        //         // Creating new title div
+        //         var newTitleDiv = $("<div>").addClass("article-title");
+        //         newTitleDiv.text(title);
+        //         $(newArticle).append(newTitleDiv);
+
+        //         // Creating new image div
+        //         var newImage = $("<img>");
+        //         newImage.attr('src', newsData[i].urlToImage);
+
+        //         // Dummy Image if null
+        //         if (articleImage === null) {
+        //             var newImageDiv = $("<div>").addClass("article-image").append(emptyImage);
+        //         } else {
+        //             var newImageDiv = $("<div>").addClass("article-image").append(newImage);
+        //         }
+        //         $(newArticle).append(newImageDiv);
+
+        //         // Creating new description div
+        //         var newDescriptionDiv = $("<div>").addClass("article-description");
+        //         if (description === null) {
+        //             newDescriptionDiv.text("No description available.");
+        //         } else {
+        //             newDescriptionDiv.text(description);
+        //         }
+        //         $(newArticle).append(newDescriptionDiv);
+
+        //         // Creating new author div
+        //         var newAuthorDiv = $("<div>").addClass("article-author");
+        //         if (author === null) {
+        //             newAuthorDiv.text("By: Unknown");
+        //         } else {
+        //             newAuthorDiv.text("By: " + author);
+        //         }
+        //         $(newArticle).append(newAuthorDiv);
+
+        //         // Creating link to news article
+        //         $(newArticle).wrapInner('<a target="_blank" href=' + articleLink + '></a>')
+
+        //         $(".news-articles").append(newArticle);
+        //     }
+        // });
+
+        $(".category-link").on("click", function () {
+            $(".news-articles").empty();
+            var categoryPicked = $(this).text().toLowerCase().trim();
+            console.log(categoryPicked);
+
+            $.ajax({
+                url: "https://newsapi.org/v2/top-headlines?country=us&category=" + categoryPicked + "&apiKey=79f8ff2b4224420c9ac71e5174746823",
+                method: "GET"
+            }).then(function (data) {
+                console.log(data);
+                var newsData = data.articles
+                console.log(newsData);
+                console.log("2");
+                for (i = 0; i < newsData.length; i++) {
+                    console.log("3");
+                    var title = newsData[i].title;
+                    var description = newsData[i].description;
+                    var author = newsData[i].author;
+                    var articleImage = newsData[i].urlToImage;
+                    var articleLink = newsData[i].url;
+                    var emptyImage = $("<img>").attr("src", "https://qph.fs.quoracdn.net/main-qimg-82907bfea9fe97e84861e2ee7c5b4f5b");
+
+                    // Creating new article div
+                    var newArticle = $("<div>").addClass("article");
+
+                    // Creating new title div
+                    var newTitleDiv = $("<div>").addClass("article-title");
+                    newTitleDiv.text(title);
+                    $(newArticle).append(newTitleDiv);
+
+                    // Creating new image div
+                    var newImage = $("<img>");
+                    newImage.attr('src', newsData[i].urlToImage);
+
+                    // Dummy Image if null
+                    if (articleImage === null) {
+                        var newImageDiv = $("<div>").addClass("article-image").append(emptyImage);
+                    } else {
+                        var newImageDiv = $("<div>").addClass("article-image").append(newImage);
+                    }
+                    $(newArticle).append(newImageDiv);
+
+                    // Creating new description div
+                    var newDescriptionDiv = $("<div>").addClass("article-description");
+                    if (description === null) {
+                        newDescriptionDiv.text("No description available.");
+                    } else {
+                        newDescriptionDiv.text(description);
+                    }
+                    $(newArticle).append(newDescriptionDiv);
+
+                    // Creating new author div
+                    var newAuthorDiv = $("<div>").addClass("article-author");
+                    if (author === null) {
+                        newAuthorDiv.text("By: Unknown");
+                    } else {
+                        newAuthorDiv.text("By: " + author);
+                    }
+                    $(newArticle).append(newAuthorDiv);
+
+                    // Creating link to news article
+                    $(newArticle).wrapInner('<a target="_blank" href=' + articleLink + '></a>')
+
+                    $(".news-articles").append(newArticle);
+                }
+            });
+        })
+
+
+        $("#user-info-submit").on("click", function (event) {
+            event.preventDefault();
+            console.log("hi");
+
+            var userInfo = {
+                name: $("#user-name").val(),
+                password: $("#password").val(),
+                city: $("#city").val(),
+                state: $("#state").val()
+            }
+
+            $.post("/register", userInfo).then(function (data) {
+                console.log(data);
+            })
         })
     })
-})
 </script>
 
 </html>
