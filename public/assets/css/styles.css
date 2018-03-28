@@ -158,7 +158,7 @@ img {
     margin: 0 auto;
 }
 
-.weather {
+#weather {
     font-size: 15px;
     padding: 10px;
     text-align: center;

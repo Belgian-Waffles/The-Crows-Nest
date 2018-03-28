@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Underground</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./assets/js/weather.js"></script>
+</head>
+
+<body>
+
+    <div id="forecastday">
+
+    </div>
+    <script>
+        var x = new Weather("CA", "Santa Ana");
+        var y = x.getWeather(function (res) {
+            $("#forecastday").append("<h1>" + x.State + ", " + x.City + "</h1>")
+            for (var i = 0; i < res.length; i++) {
+                var divElement = `
+                <div style="float:left;width:150px;border: 1px solid green;margin: 2px;text-align: center;">
+                <p>`+ res[i].day + `</p>
+                <p>`+ res[i].title + `</p>
+                <img src="`+ res[i].imageUrl + `">
+                <p><span>`+ res[i].fahrenheitLow + `&#8457;</span> - <span>` + res[i].fahrenheitHigh + `&#8457;</span></p>
+                <p><span>`+ res[i].celsiusLow + ` &#8451;</span> - <span>` + res[i].celsiusHigh + ` &#8451;</span></p>
+                </div>
+                `;
+                $("#forecastday").append(divElement);
+            }
+        });
+    </script>
+</body>
+
+</html> 
