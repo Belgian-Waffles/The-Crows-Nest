@@ -170,8 +170,8 @@ img {
     font-size: 15px;
     padding: 10px;
     text-align: center;
-    border-top: 1.5pt solid rgb(43, 44, 45);
-    border-bottom: 1.5pt solid rgb(43, 44, 45);
+    border-top: 1pt solid rgb(43, 44, 45);
+    border-bottom: 1pt solid rgb(43, 44, 45);
     font-family: 'Cabin', sans-serif;
     text-transform: uppercase;
     position: relative;
