@@ -67,6 +67,17 @@ a:visited {
    text-decoration: none;
 }
 
+/* Search Bar */
+#search {
+    padding: 15px;
+}
+
+#search-bar {
+    color: rgb(43, 43, 44);
+}
+
+
+
 /* Catgories Tab */
 .categories {
     margin-top: 2%;
@@ -86,6 +97,15 @@ a:visited {
     border-top: 1pt solid rgb(43, 43, 44);
 }
 
+.category-link {
+    color: rgb(43, 43, 44);
+    transition: .3s;
+}
+
+.category-link:hover {
+    color: rgba(43, 43, 44, .6);
+}
+
 /* Article CSS */
 .news-container {
     background-color: rgb(241, 241, 241);
@@ -102,7 +122,7 @@ a:visited {
     margin-top: 2%;
     transform: scale(.96);
     box-shadow: none;
-
+    vertical-align: top;
     transition: .2s;
 }
 
@@ -145,6 +165,28 @@ img {
     text-align: right;
 }
 
+/* Weather CSS */
+#weather {
+    font-size: 15px;
+    padding: 10px;
+    text-align: center;
+    border-top: 1.5pt solid rgb(43, 44, 45);
+    border-bottom: 1.5pt solid rgb(43, 44, 45);
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    text-align: justify;
+    text-align-last: center;
+    width: inherit;
+}
+
+.weather {
+    display: inline-block;
+    margin-right: 6%;
+    margin-left: 6%;
+}
+
+
 
 /* Test Logo */
 .logo {
@@ -157,14 +199,3 @@ img {
     height: 100px;
     margin: 0 auto;
 }
-
-#weather {
-    font-size: 15px;
-    padding: 10px;
-    text-align: center;
-    border-top: 1.5pt solid rgb(43, 44, 45);
-    border-bottom: 1.5pt solid rgb(43, 44, 45);
-    font-family: 'Cabin', sans-serif;
-    text-transform: uppercase;
-}
-

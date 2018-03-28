@@ -22,10 +22,16 @@
 <body>
     <div class="container-fluid">
         <div class="row header">
-            <div class="search">
-                <i class="fas fa-search"></i> Search</div>
+            <a class="search-link" href="#">
+                <div class="search">
+                    <i class="fas fa-search"></i> Search
+                </div>
+            </a>
+            <div id="search" class="hide">
+                <input type="text" id="search-bar" placeholder="Let's search...">
+            </div>
             <div class="sign-up">
-                <div id="login">Sign Up</div>
+                <div id="sign-up">Sign Up</div>
             </div>
             <a href="#" class="login">
                 <div id="login">Login</div>
@@ -37,7 +43,6 @@
             </div>
         </div>
         <div class="row" id="weather">
-            This would be weather
         </div>
     </div>
 
@@ -49,6 +54,12 @@
                         <a class="category-link" href="#">Technology</a>
                     </li>
                     <li class="category">
+                        <a class="category-link" href="#">General</a>
+                    </li>
+                    <li class="category">
+                        <a class="category-link" href="#">Science</a>
+                    </li>
+                    <li class="category">
                         <a class="category-link" href="#">Sports</a>
                     </li>
                     <li class="category">
@@ -58,7 +69,7 @@
                         <a class="category-link" href="#">Politics</a>
                     </li>
                     <li class="category">
-                        <a class="category-link" href="#">Environment</a>
+                        <a class="category-link" href="#">Entertainment</a>
                     </li>
 
                 </ul>
@@ -95,67 +106,73 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $.ajax({
-            url: "https://newsapi.org/v2/top-headlines?country=us&apiKey=79f8ff2b4224420c9ac71e5174746823",
-            method: "GET"
-        }).then(function (data) {
-            console.log(data);
-            var newsData = data.articles
-            console.log(newsData);
-            console.log("2");
-            for (i = 0; i < newsData.length; i++) {
-                console.log("3");
-                var title = newsData[i].title;
-                var description = newsData[i].description;
-                var author = newsData[i].author;
-                var articleImage = newsData[i].urlToImage;
-                var articleLink = newsData[i].url;
-                var emptyImage = $("<img>").attr("src", "https://qph.fs.quoracdn.net/main-qimg-82907bfea9fe97e84861e2ee7c5b4f5b");
+        // $.ajax({
+        //     url: "https://newsapi.org/v2/top-headlines?country=us&apiKey=79f8ff2b4224420c9ac71e5174746823",
+        //     method: "GET"
+        // }).then(function (data) {
+        //     console.log(data);
+        //     var newsData = data.articles
+        //     console.log(newsData);
+        //     console.log("2");
+        //     for (i = 0; i < newsData.length; i++) {
+        //         console.log("3");
+        //         var title = newsData[i].title;
+        //         var description = newsData[i].description;
+        //         var author = newsData[i].author;
+        //         var articleImage = newsData[i].urlToImage;
+        //         var articleLink = newsData[i].url;
+        //         var emptyImage = $("<img>").attr("src", "https://qph.fs.quoracdn.net/main-qimg-82907bfea9fe97e84861e2ee7c5b4f5b");
 
-                // Creating new article div
-                var newArticle = $("<div>").addClass("article");
+        //         // Creating new article div
+        //         var newArticle = $("<div>").addClass("article");
 
-                // Creating new title div
-                var newTitleDiv = $("<div>").addClass("article-title");
-                newTitleDiv.text(title);
-                $(newArticle).append(newTitleDiv);
+        //         // Creating new title div
+        //         var newTitleDiv = $("<div>").addClass("article-title");
+        //         newTitleDiv.text(title);
+        //         $(newArticle).append(newTitleDiv);
 
-                // Creating new image div
-                var newImage = $("<img>");
-                newImage.attr('src', newsData[i].urlToImage);
+        //         // Creating new image div
+        //         var newImage = $("<img>");
+        //         newImage.attr('src', newsData[i].urlToImage);
 
-                // Dummy Image if null
-                if (articleImage === null) {
-                    var newImageDiv = $("<div>").addClass("article-image").append(emptyImage);
-                } else {
-                    var newImageDiv = $("<div>").addClass("article-image").append(newImage);
-                }
-                $(newArticle).append(newImageDiv);
+        //         // Dummy Image if null
+        //         if (articleImage === null) {
+        //             var newImageDiv = $("<div>").addClass("article-image").append(emptyImage);
+        //         } else {
+        //             var newImageDiv = $("<div>").addClass("article-image").append(newImage);
+        //         }
+        //         $(newArticle).append(newImageDiv);
 
-                // Creating new description div
-                var newDescriptionDiv = $("<div>").addClass("article-description");
-                if (description === null) {
-                    newDescriptionDiv.text("No description available.");
-                } else {
-                    newDescriptionDiv.text(description);
-                }
-                $(newArticle).append(newDescriptionDiv);
+        //         // Creating new description div
+        //         var newDescriptionDiv = $("<div>").addClass("article-description");
+        //         if (description === null) {
+        //             newDescriptionDiv.text("No description available.");
+        //         } else {
+        //             newDescriptionDiv.text(description);
+        //         }
+        //         $(newArticle).append(newDescriptionDiv);
 
-                // Creating new author div
-                var newAuthorDiv = $("<div>").addClass("article-author");
-                if (author === null) {
-                    newAuthorDiv.text("By: Unknown");
-                } else {
-                    newAuthorDiv.text("By: " + author);
-                }
-                $(newArticle).append(newAuthorDiv);
+        //         // Creating new author div
+        //         var newAuthorDiv = $("<div>").addClass("article-author");
+        //         if (author === null) {
+        //             newAuthorDiv.text("By: Unknown");
+        //         } else {
+        //             newAuthorDiv.text("By: " + author);
+        //         }
+        //         $(newArticle).append(newAuthorDiv);
 
-                // Creating link to news article
-                $(newArticle).wrapInner('<a target="_blank" href=' + articleLink + '></a>')
+        //         // Creating link to news article
+        //         $(newArticle).wrapInner('<a target="_blank" href=' + articleLink + '></a>')
 
-                $(".news-articles").append(newArticle);
-            }
-        });
+        //         $(".news-articles").append(newArticle);
+        //     }
+        // });
+
+        // Search Button Click
+        $(".search").on("click", function () {
+            $("#search").toggleClass("hide");
+            // $(".search").toggleClass("hide");
+        })
 
         $(".category-link").on("click", function () {
             $(".news-articles").empty();
@@ -172,6 +189,7 @@
                 console.log("2");
                 for (i = 0; i < newsData.length; i++) {
                     console.log("3");
+                    // Put all returned data into variables
                     var title = newsData[i].title;
                     var description = newsData[i].description;
                     var author = newsData[i].author;
@@ -191,7 +209,7 @@
                     var newImage = $("<img>");
                     newImage.attr('src', newsData[i].urlToImage);
 
-                    // Dummy Image if null
+                    // Empty default image if null
                     if (articleImage === null) {
                         var newImageDiv = $("<div>").addClass("article-image").append(emptyImage);
                     } else {
@@ -210,7 +228,7 @@
 
                     // Creating new author div
                     var newAuthorDiv = $("<div>").addClass("article-author");
-                    if (author === null) {
+                    if (author === null || author === "") {
                         newAuthorDiv.text("By: Unknown");
                     } else {
                         newAuthorDiv.text("By: " + author);
@@ -227,69 +245,180 @@
 
         // Getting weather data
 
-//         var Weather = function (state, city) {
-//     this.State = state;
-//     this.City = city;
-//     this.isStateValidated = validateStateAbbr(this.State);
-//     this.getWeather = function (cb) {
-//         if (!this.isStateValidated) {
-//            return false;
-//        }
-//        // uncomment in production it's in .env 
-//         //var queryUrl="http://api.wunderground.com/api/"+process.env.WEATHER_API_KEY+"/forecast/q/"+this.State+"/"+concatenateCity(this.City)+".json";
-//         var queryUrl = "http://api.wunderground.com/api/" + "f3076c2b38004fb8" + "/forecast/q/" + this.State + "/" + concatenateCity(this.City) + ".json";
-//         $.ajax({
-//             type: "GET",
-//             url: queryUrl,
-//             async: false,
-//             dataType: "JSON"
-//         }).done(function (response) {
-//             var data = [];
-//             var forecastday = response.forecast.simpleforecast.forecastday;
-//             for (var i = 0; i < forecastday.length; i++) {
-//                 var obj = {};
-//                 obj.day = forecastday[i].date.weekday + ", " + forecastday[i].date.monthname + " " + forecastday[i].date.day;
-//                 obj.title = forecastday[i].icon;
-//                 obj.imageUrl = forecastday[i].icon_url;
-//                 obj.celsiusHigh = forecastday[i].high.celsius;
-//                 obj.fahrenheitHigh = forecastday[i].high.fahrenheit;
-//                 obj.celsiusLow = forecastday[i].low.celsius;
-//                 obj.fahrenheitLow = forecastday[i].low.fahrenheit;
-//                 data.push(obj);
-//             }
-//             cb(data);
-//         });
-//     };
-// }
-// function validateStateAbbr(state) {
-//     var stateList = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY", "GU", "PR", "VI"];
-//     if (stateList.indexOf(state.toUpperCase()) > -1) {
-//         return true;
-//     }
-//     else {
-//         return false;
-//     }
-// }
-// function concatenateCity(city) {
-//     return city.trim().replace(" ", "_");
-// }
+        var Weather = function (state, city) {
+            this.State = state;
+            this.City = city;
+            this.isStateValidated = validateStateAbbr(this.State);
+            this.getWeather = function (cb) {
+                if (!this.isStateValidated) {
+                    return false;
+                }
+                // uncomment in production it's in .env 
+                //var queryUrl="http://api.wunderground.com/api/"+process.env.WEATHER_API_KEY+"/forecast/q/"+this.State+"/"+concatenateCity(this.City)+".json";
+                var queryUrl = "http://api.wunderground.com/api/" + "f3076c2b38004fb8" + "/forecast/q/" + this.State + "/" + concatenateCity(this.City) + ".json";
+                $.ajax({
+                    type: "GET",
+                    url: queryUrl,
+                    async: false,
+                    dataType: "JSON"
+                }).done(function (response) {
+                    var data = [];
+                    var forecastday = response.forecast.simpleforecast.forecastday;
+                    for (var i = 0; i < forecastday.length; i++) {
+                        var obj = {};
+                        obj.day = forecastday[i].date.weekday + ", " + forecastday[i].date.monthname + " " + forecastday[i].date.day;
+                        obj.title = forecastday[i].icon;
+                        obj.imageUrl = forecastday[i].icon_url;
+                        obj.celsiusHigh = forecastday[i].high.celsius;
+                        obj.fahrenheitHigh = forecastday[i].high.fahrenheit;
+                        obj.celsiusLow = forecastday[i].low.celsius;
+                        obj.fahrenheitLow = forecastday[i].low.fahrenheit;
+                        data.push(obj);
+                    }
+                    cb(data);
+                });
+            };
+        }
+        function validateStateAbbr(state) {
+            var stateList = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY", "GU", "PR", "VI"];
+            if (stateList.indexOf(state.toUpperCase()) > -1) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function concatenateCity(city) {
+            return city.trim().replace(" ", "_");
+        }
 
-//         var x = new Weather("CA", "Santa Ana");
-//         var y = x.getWeather(function (res) {
-//             $("#forecastday").append("<h1>" + x.State + ", " + x.City + "</h1>")
-//             for (var i = 0; i < res.length; i++) {
-//                 var divElement = `
-//                 <div style="float:left;width:150px;border: 1px solid green;margin: 2px;text-align: center;">
-//                 <p>`+ res[i].day + `</p>
-//                 <p>`+ res[i].title + `</p>
-//                 <img src="`+ res[i].imageUrl + `">
-//                 <p><span>`+ res[i].fahrenheitLow + `&#8457;</span> - <span>` + res[i].fahrenheitHigh + `&#8457;</span></p>
-//                 <p><span>`+ res[i].celsiusLow + ` &#8451;</span> - <span>` + res[i].celsiusHigh + ` &#8451;</span></p>
-//                 </div>
-//                 `;
-//                 $("#weather").append(divElement);
-//             }
-//         });
+        var weatherData = new Weather("CA", "Santa Ana");
+        var y = weatherData.getWeather(function (res) {
+            $("#forecastday").append("<h1>" + weatherData.State + ", " + weatherData.City + "</h1>")
+            console.log(res);
+            for (var i = 0; i < res.length; i++) {
+                var day = res[i].day;
+                var image = res[i].imageUrl;
+                var weatherCondition = res[i].title;
+                var fahrenheitHigh = res[i].fahrenheitHigh;
+                var fahrenheitLow = res[i].fahrenheitLow;
+                var celsiusHigh = res[i].celsiusHigh;
+                var celsiusLow = res[i].celsiusLow;
+
+                console.log(fahrenheitLow);
+                console.log(celsiusLow);
+
+                var newWeatherDiv = $("<div>").addClass("weather");
+
+                // Create new day div
+                var newDayDiv = $("<div>").addClass("day");
+                newDayDiv.text(day);
+                $(newWeatherDiv).append(newDayDiv);
+
+                // Creating new image div
+                var newImage = $("<img>");
+                newImage.attr('src', image);
+                $(newWeatherDiv).append(newImage);
+
+                // Create new weather condition div
+                var newConditionDiv = $("<div>").addClass("condition");
+                newConditionDiv.text(weatherCondition);
+                $(newWeatherDiv).append(newConditionDiv);
+
+                // Create new temperature high div
+                var newTempHighDiv = $("<div>").addClass("temp-high");
+                var fHigh = $("<span>" + fahrenheitHigh + " F</span>").addClass("f-high");
+                console.log(fHigh);
+                var cHigh = $("<span>" + celsiusHigh + " C</span>").addClass("c-high");
+                newTempHighDiv.append(fHigh);
+                newTempHighDiv.append(" ");
+                newTempHighDiv.append(cHigh)
+                $(newWeatherDiv).append(newTempHighDiv);
+
+                // Create new temperature low div
+                var newTempLowDiv = $("<div>").addClass("temp-low");
+                var fLow = $("<span>" + fahrenheitLow + " F</span>").addClass("f-low");
+                var cLow = $("<span>" + celsiusLow + " C</span>").addClass("c-low");
+                newTempLowDiv.append(fLow);
+                newTempLowDiv.append(" ");
+                newTempLowDiv.append(cLow);
+                $(newWeatherDiv).append(newTempLowDiv);
+
+                // Append all day to our weather section
+                $("#weather").append(newWeatherDiv);
+            }
+        });
+
+        // Search ajax call
+        $("#search-bar").on('keyup', function (e) {
+            if (e.keyCode == 13) {
+                $(".news-articles").empty();
+                var userSearch = $("#search-bar").val().trim();
+
+                $.ajax({
+                    url: "https://newsapi.org/v2/everything?q=" + userSearch + "&language=en&sortBy=publishedAt&apiKey=79f8ff2b4224420c9ac71e5174746823",
+                    method: "GET"
+                }).then(function (data) {
+                    console.log(data);
+                    var newsData = data.articles
+                    console.log(newsData);
+                    console.log("2");
+                    for (i = 0; i < newsData.length; i++) {
+                        console.log("3");
+                        // Put all returned data into variables
+                        var title = newsData[i].title;
+                        var description = newsData[i].description;
+                        var author = newsData[i].author;
+                        var articleImage = newsData[i].urlToImage;
+                        var articleLink = newsData[i].url;
+                        var emptyImage = $("<img>").attr("src", "https://qph.fs.quoracdn.net/main-qimg-82907bfea9fe97e84861e2ee7c5b4f5b");
+
+                        // Creating new article div
+                        var newArticle = $("<div>").addClass("article");
+
+                        // Creating new title div
+                        var newTitleDiv = $("<div>").addClass("article-title");
+                        newTitleDiv.text(title);
+                        $(newArticle).append(newTitleDiv);
+
+                        // Creating new image div
+                        var newImage = $("<img>");
+                        newImage.attr('src', newsData[i].urlToImage);
+
+                        // Empty default image if null
+                        if (articleImage === null) {
+                            var newImageDiv = $("<div>").addClass("article-image").append(emptyImage);
+                        } else {
+                            var newImageDiv = $("<div>").addClass("article-image").append(newImage);
+                        }
+                        $(newArticle).append(newImageDiv);
+
+                        // Creating new description div
+                        var newDescriptionDiv = $("<div>").addClass("article-description");
+                        if (description === null) {
+                            newDescriptionDiv.text("No description available.");
+                        } else {
+                            newDescriptionDiv.text(description);
+                        }
+                        $(newArticle).append(newDescriptionDiv);
+
+                        // Creating new author div
+                        var newAuthorDiv = $("<div>").addClass("article-author");
+                        if (author === null || author === "") {
+                            newAuthorDiv.text("By: Unknown");
+                        } else {
+                            newAuthorDiv.text("By: " + author);
+                        }
+                        $(newArticle).append(newAuthorDiv);
+
+                        // Creating link to news article
+                        $(newArticle).wrapInner('<a target="_blank" href=' + articleLink + '></a>')
+
+                        $(".news-articles").append(newArticle);
+                    }
+                });
+            }
+        })
 
 
         $("#user-info-submit").on("click", function (event) {
