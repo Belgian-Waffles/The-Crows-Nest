@@ -1,10 +1,12 @@
 var express = require('express');
 var app = express();
+var path = require('path');
 var passport = require('passport')
 var session = require('express-session')
 var bodyParser = require('body-parser')
 var exphbs = require('express-handlebars')
 
+app.use(express.static('public'));
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -25,11 +27,11 @@ app.engine('hbs', exphbs({
 app.set('view engine', '.hbs');
 
  
-app.get('/', function(req, res) {
+app.get("/", function(req, res) {
+
+    res.sendFile(path.join(__dirname, "public/home2.html"));
  
-    res.send('Welcome to Passport with Sequelize');
- 
-});
+ });
  
  
 app.listen(5000, function(err) {
