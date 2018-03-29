@@ -1,11 +1,20 @@
 module.exports = function (sequelize, Sequelize) {
   var Community = sequelize.define("Community", {
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
+    },
     title: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
+    },
+    ownerId:{
+      type: Sequelize.INTEGER,
+      allowNull: false
     },
     'createdAt': {
       type: Sequelize.DATE(3),
@@ -24,10 +33,6 @@ module.exports = function (sequelize, Sequelize) {
       foreignKey: {
         allowNull: false
       }
-    });
-    Community.belongsTo(models.User, {
-      as: "Owner",
-      constraints: false,
     });
     Community.hasOne(models.Forum, {
       onDelete: "cascade"

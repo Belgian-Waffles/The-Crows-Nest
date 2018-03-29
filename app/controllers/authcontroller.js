@@ -15,6 +15,9 @@ exports.dashboard = function(req, res) {
     res.render('dashboard');
  
 }
+exports.forum = function(req,res) {
+    res.render('forum',{username:req.user.username,id:req.user.id});
+}
 exports.logout = function(req, res) {
  
     req.session.destroy(function(err) {

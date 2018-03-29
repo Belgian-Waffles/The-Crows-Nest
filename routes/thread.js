@@ -29,7 +29,8 @@ module.exports = function(app) {
       });
     
       app.post("/api/threads", function(req, res) {
-        db.Thread.create(req.body).then(function(dbThread) {
+        db.Thread.create(req.body);
+        db.Thread.find(req.body).then(function(dbThread) {
           res.json(dbThread);
         });
       });
