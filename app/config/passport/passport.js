@@ -54,7 +54,6 @@ passport.use('local-signin', new LocalStrategy(
             return bCrypt.compareSync(password, userpass);
  
         }
- 
         User.findOne({
             where: {
                 email: email
@@ -109,6 +108,7 @@ passport.use('local-signin', new LocalStrategy(
             var generateHash = function (password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
+            console.log("TEST LOGGGGG: "+User);
 
             User.findOne({
                 where: {
