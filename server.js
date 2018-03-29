@@ -4,6 +4,8 @@ var passport = require('passport')
 var session = require('express-session')
 var bodyParser = require('body-parser')
 var exphbs = require('express-handlebars')
+var path = require("path");
+var PORT = 5000;
 
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,7 +17,11 @@ app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}))
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
+// Change static folder
+app.use(express.static('public'));
+
 var env = require('dotenv').load();
+
 
 //For Handlebars
 app.set('views', './app/views')
@@ -27,12 +33,12 @@ app.set('view engine', '.hbs');
  
 app.get('/', function(req, res) {
  
-    res.send('Welcome to Passport with Sequelize');
+    res.sendFile(path.join(__dirname, "public/home2.html"));
  
 });
  
  
-app.listen(5000, function(err) {
+app.listen(PORT, function(err) {
  
     if (!err)
         console.log("Site is live");
@@ -52,7 +58,8 @@ console.log("xxxx" + models.user)
 //Sync Database
 models.sequelize.sync().then(function() {
  
-    console.log('Nice! Database looks fine')
+    console.log('Nice! Database looks fine');
+    console.log("Local Host running on port: " + PORT);
  
 }).catch(function(err) {
  

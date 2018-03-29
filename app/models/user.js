@@ -8,21 +8,17 @@ module.exports = function(sequelize, Sequelize) {
             type: Sequelize.INTEGER
         },
  
-        firstname: {
+        city: {
             type: Sequelize.STRING,
             notEmpty: true
         },
  
-        lastname: {
+        state: {
             type: Sequelize.STRING,
             notEmpty: true
         },
  
         username: {
-            type: Sequelize.TEXT
-        },
- 
-        about: {
             type: Sequelize.TEXT
         },
  

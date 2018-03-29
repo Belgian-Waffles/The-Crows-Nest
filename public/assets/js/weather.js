@@ -82,9 +82,9 @@ var y = weatherData.getWeather(function (res) {
 
         // Create new temperature high div
         var newTempHighDiv = $("<div>").addClass("temp-high");
-        var fHigh = $("<span>" + fahrenheitHigh + " F</span>").addClass("f-high");
+        var fHigh = $("<span>" + fahrenheitHigh + " &#8457;</span>").addClass("f-high");
         console.log(fHigh);
-        var cHigh = $("<span>" + celsiusHigh + " C</span>").addClass("c-high");
+        var cHigh = $("<span>" + celsiusHigh + " &#8451;</span>").addClass("c-high");
         newTempHighDiv.append(fHigh);
         newTempHighDiv.append(" ");
         newTempHighDiv.append(cHigh)
@@ -92,8 +92,8 @@ var y = weatherData.getWeather(function (res) {
 
         // Create new temperature low div
         var newTempLowDiv = $("<div>").addClass("temp-low");
-        var fLow = $("<span>" + fahrenheitLow + " F</span>").addClass("f-low");
-        var cLow = $("<span>" + celsiusLow + " C</span>").addClass("c-low");
+        var fLow = $("<span>" + fahrenheitLow + " &#8457;</span>").addClass("f-low");
+        var cLow = $("<span>" + celsiusLow + " &#8451;</span>").addClass("c-low");
         newTempLowDiv.append(fLow);
         newTempLowDiv.append(" ");
         newTempLowDiv.append(cLow);
