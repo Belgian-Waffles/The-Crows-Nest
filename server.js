@@ -1,10 +1,10 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var passport = require('passport')
-var session = require('express-session')
-var bodyParser = require('body-parser')
-var exphbs = require('express-handlebars')
+var passport = require('passport');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var exphbs = require('express-handlebars');
 
 app.use(express.static('public'));
 //For BodyParser
