@@ -1,5 +1,10 @@
 module.exports = function (sequelize, Sequelize) {
   var Community = sequelize.define("Community", {
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
+  },
     title: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -19,20 +24,17 @@ module.exports = function (sequelize, Sequelize) {
     {
       timestamps: true,
     });
-  Community.associate = function (models) {
-    Community.hasMany(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-    Community.belongsTo(models.User, {
-      as: "Owner",
-      constraints: false,
-    });
-    Community.hasOne(models.Forum, {
-      onDelete: "cascade"
-    })
-  };
 
+    Community.associate = function(models) {
+      Community.hasMany(models.User, {
+        onDelete: "cascade"
+      });
+    };
+
+    Community.associate = function(models) {
+      Community.hasOne(models.Forum, {
+        onDelete: "cascade"
+      });
+    };
   return Community;
 };

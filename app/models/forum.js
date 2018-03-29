@@ -1,5 +1,10 @@
 module.exports = function (sequelize, Sequelize) {
   var Forum = sequelize.define("Forum", {
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
+  },
     title: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -19,16 +24,20 @@ module.exports = function (sequelize, Sequelize) {
     {
       timestamps: true,
     });
-  Forum.associate = function (models) {
-    Forum.hasMany(models.Thread, {
-      onDelete: "cascade"
-    });
-    Forum.belongsTo(models.Community, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+    
+    Forum.associate = function(models) {
+      Forum.hasMany(models.Thread, {
+        onDelete: "cascade"
+      });
+    };
 
+    Forum.associate = function(models) {
+      Forum.belongsTo(models.Community, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+    };
+    
   return Forum;
 };

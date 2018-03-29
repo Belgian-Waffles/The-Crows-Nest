@@ -1,5 +1,10 @@
 module.exports = function (sequelize, Sequelize) {
   var Thread = sequelize.define("Thread", {
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
+  },
     title: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -19,24 +24,19 @@ module.exports = function (sequelize, Sequelize) {
     {
       timestamps: true,
     });
-
-  Thread.associate = function (models) {
-    // We're saying that a Thread should belong to an Author
-    // A Thread can't be created without an Author due to the foreign key constraint
-    Thread.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-    Thread.belongsTo(models.Forum, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-    Thread.hasMany(models.Post, {
-      onDelete: "cascade"
-    });
-  };
+    
+    Thread.associate = function(models) {
+      Thread.hasMany(models.Post, {
+        onDelete: "cascade"
+      });
+    };
+    Thread.associate = function(models) {
+      Thread.belongsTo(models.Forum, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+    };
 
   return Thread;
 };
