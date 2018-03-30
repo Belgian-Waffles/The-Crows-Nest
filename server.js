@@ -51,10 +51,15 @@ var models = require("./app/models");
 
 //Routes
 var authRoute = require('./app/routes/auth.js')(app, passport);
+require('./app/routes/post.js')(app);
+require('./app/routes/community.js')(app);
+require('./app/routes/forum.js')(app);
+require('./app/routes/thread.js')(app);
+require('./app/routes/user.js')(app);
 
 //load passport strategies
-require('./app/config/passport/passport.js')(passport, models.user);
-console.log("xxxx" + models.user)
+require('./app/config/passport/passport.js')(passport, models.User);
+console.log("xxxx" + models.User)
 //Sync Database
 models.sequelize.sync().then(function() {
  
