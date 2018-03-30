@@ -24,16 +24,16 @@ module.exports = function (sequelize, Sequelize) {
     {
       timestamps: true,
     });
-  Forum.associate = function (models) {
-    Forum.hasMany(models.Thread, {
-      onDelete: "cascade"
-    });
-    Forum.belongsTo(models.Community, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
-
+    
+    Forum.associate = function(models) {
+      Forum.hasMany(models.Thread, {
+        onDelete: "cascade"
+      });
+      Forum.belongsTo(models.Community, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+    };   
   return Forum;
 };

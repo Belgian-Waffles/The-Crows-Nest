@@ -39,5 +39,10 @@ module.exports = function (sequelize, Sequelize) {
     })
   };
 
+    // Community.associate = function(models) {
+    //   Community.hasMany(models.User, {
+    //     onDelete: "cascade"
+    //   });
+    // };
   return Community;
 };

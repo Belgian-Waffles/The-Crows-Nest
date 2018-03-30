@@ -53,13 +53,13 @@ module.exports = function (sequelize, Sequelize) {
     {
         timestamps: true,
     });
-    User.associate = function (models) {
-        User.hasMany(models.Post, {
-            onDelete: "cascade"
+
+    User.associate = function(models) {
+        User.belongsTo(models.Community, {
+          foreignKey: {
+            allowNull: true
+          }
         });
-        User.hasMany(models.Thread, {
-            onDelete: "cascade"
-        });
-    };
+      };
     return User;
 }
