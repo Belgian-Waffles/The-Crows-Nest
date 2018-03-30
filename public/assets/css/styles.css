@@ -46,6 +46,7 @@ a:visited {
     background-color: rgb(43, 43, 44);
 }
 
+
 .login {
     position: relative;
     display: inline-block;
@@ -106,6 +107,7 @@ a:visited {
     color: rgba(43, 43, 44, .6);
 }
 
+
 /* Article CSS */
 .news-container {
     background-color: rgb(241, 241, 241);
@@ -165,6 +167,7 @@ img {
     text-align: right;
 }
 
+
 /* Weather CSS */
 #weather {
     font-size: 15px;
@@ -185,6 +188,7 @@ img {
     margin-right: 6%;
     margin-left: 6%;
 }
+
 
 /* Sign-Up Page */
 #cn-logo-signup {
@@ -219,6 +223,81 @@ img {
     padding-left: 20px;
     height: 35px;
 }
+
+
+/* Username Dashboard Page */
+.username-display {
+    position: relative;
+    display: inline-block;
+    transition: .5s;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(43, 43, 44);
+}
+
+.username-display:hover {
+    color: rgb(43, 43, 44);
+    background: white;
+    text-decoration: none;
+}
+
+
+/* Community CSS */
+.community {
+    position: relative;
+    margin-left: auto;
+    display: inline-block;
+    transition: .5s;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(43, 43, 44);
+}
+
+.community:hover {
+    color: rgb(43, 43, 44);
+    background: white;
+    text-decoration: none;
+}
+
+#community {
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+}
+
+.community-input {
+    border-width: 0;
+    border-bottom: 1pt solid rgb(43, 43, 44);
+    margin-top: 10%;
+    width: 70%;
+    font-size: 20px;
+    padding-left: 20px;
+    height: 35px;
+}
+
+#create-community-btn {
+    font-size: 15px;
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    left: 30%;
+    margin-top: 10%;
+    color: white;
+    background-color: rgb(43, 43, 44);
+    border: 2pt solid rgb(43, 43, 44);
+    transition: .5s;
+}
+
+#create-community-btn:hover {
+    color: rgb(43, 43, 44);
+    background-color: white;
+    border: 2pt solid rgb(43, 43, 44);
+}
+
+
 
 #city {
     width: 48%
