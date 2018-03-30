@@ -22,7 +22,7 @@ module.exports = function (sequelize, Sequelize) {
     },
     'updatedAt': {
       type: Sequelize.DATE(3),
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
     },
   },
     {
@@ -31,7 +31,7 @@ module.exports = function (sequelize, Sequelize) {
   Community.associate = function (models) {
     Community.hasMany(models.User, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
     Community.hasOne(models.Forum, {

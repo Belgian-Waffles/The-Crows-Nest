@@ -1,10 +1,10 @@
-use tcn_db;
-/*1- */
-insert into communities (title) values ("communities Test 1");
-insert into communities (title) values ("communities 2 Test 2");
+USE sequelize_passport;
 
-use tcn_db;
-/* 2 */
+
+insert into communities (title,ownerId) values ("communities Test 1",1);
+insert into communities (title,ownerId) values ("communities 2 Test 2",2);
+
+
 insert into users
 (username,email,password,state,city,CommunityId)
 values
@@ -34,17 +34,16 @@ values
 
 /* 4 */
 
-insert into threads (title,forumid) values ("test threads 1",1);
-insert into threads (title,forumid) values ("test threads 2",1);
-insert into threads (title,forumid) values ("test threads 3",1);
-insert into threads (title,forumid) values ("test threads 4",2);
-insert into threads (title,forumid) values ("test threads 5",2);
+insert into threads (title,forumid,UserId) values ("test threads 1",1,1);
+insert into threads (title,forumid,UserId) values ("test threads 2",1,1);
+insert into threads (title,forumid,UserId) values ("test threads 3",1,2);
+insert into threads (title,forumid,UserId) values ("test threads 4",2,2);
+insert into threads (title,forumid,UserId) values ("test threads 5",2,1);
 
 /* 5 */
 
-insert into posts (title,body,threadid) values ("post title 1","post body 1",1);
-insert into posts (title,body,threadid) values ("post title 2","post body 2",1);
-insert into posts (title,body,threadid) values ("post title 3","post body 3",2);
-insert into posts (title,body,threadid) values ("post title 4","post body 4",3);
-insert into posts (title,body,threadid) values ("post title 5","post body 5",2);
-
+insert into posts (title,body,threadid,UserId) values ("post title 1","post body 1",1,1);
+insert into posts (title,body,threadid,UserId) values ("post title 2","post body 2",1,1);
+insert into posts (title,body,threadid,UserId) values ("post title 3","post body 3",2,2);
+insert into posts (title,body,threadid,UserId) values ("post title 4","post body 4",3,2);
+insert into posts (title,body,threadid,UserId) values ("post title 5","post body 5",2,2);

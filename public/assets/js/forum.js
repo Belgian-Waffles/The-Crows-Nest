@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     var url = window.location.search;
     var communityID;
@@ -6,13 +7,16 @@ $(document).ready(function () {
     if (url.indexOf("?community_id=") !== -1) {
         communityID = url.split("=")[1];
     }
+    else{
+        communityID=1;
+    }
     setForum();
     $(document).on("click", ".thread", showThread);
     $(document).on("click", ".submit", postToForum);
     function setForum() {
         $.get("/api/communities/" + communityID, function (data) {
             $(".forum").empty();
-            var forum = data.getForums();
+            var forum = data.getForum();
             forumID = forum.id;
             var forumThreads = [forum.getThreads()];
             var rowsToAdd = [];
@@ -40,7 +44,7 @@ $(document).ready(function () {
             if (threadPosts.length > 0) {
                 for (i = 0; i < threadPosts.length; i++) {
                     var currentPost = threadPosts[i];
-                    var postElement = $(["li class=post id=" + currentPost.id, "<span>", currentPost.title, "</span>", "<p>", currentPost.body, "</p>", "</li>"].join(""));
+                    var postElement = $(["<li class=post id='" + currentPost.id+"'>", "<span>", currentPost.title, "</span>", "<p>", currentPost.body, "</p>", "</li>"].join(""));
                     $(".forum").prepend(rowsToAdd);
                 }
             }

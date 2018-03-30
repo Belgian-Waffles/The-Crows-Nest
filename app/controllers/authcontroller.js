@@ -14,7 +14,7 @@ exports.dashboard = function(req, res) {
  
     res.render('dashboard', {username: req.user.username});
  
-}
+} 
 exports.forum = function(req,res) {
     res.render('forum',{username:req.user.username,id:req.user.id});
 }
