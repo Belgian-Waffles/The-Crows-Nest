@@ -89,13 +89,19 @@
                                 [
                                     "<li class='thread' id='" + forumThreads[i].id + "'",
                                     "<span>",
-                                    forumThreads[i].title,
+                                    "Thread Title: " + forumThreads[i].title,
+                                    "</span>",
+                                    "<br>",
+                                    "<span>",
+                                    "Username: " + forumThreads[i].username,
                                     "</span>",
                                     "</li>"
                                 ].join(""));
                             threadElement.attr("threadID", forumThreads[i].id);
                             threadElement.attr("threadTitle", forumThreads[i].title);
+                            threadElement.attr("threadUserName", forumThreads[i].username);
                             rowsToAdd.push(threadElement);
+                            console.log(threadElement);
                         }
                         forumDiv.append(rowsToAdd);
                         $(".forum").prepend(forumDiv);
@@ -111,12 +117,15 @@
             if (currentThread) {
                 $("#thread").val(currentThread.attr("threadTitle"));
                 var threadPosts;
+                console.log(currentThread);
                 $.get("/api/threads/" + currentThread.attr("threadID"), function (data) {
                     threadPosts = data.Posts;
+                    console.log(threadPosts)
                     var rowsToAdd = [];
                     if (threadPosts.length > 0) {
                         var threadDiv = $("<div>");
-                        threadDiv.append("<h2>" + currentThread.attr("threadTitle") + "</h2>")
+                        threadDiv.append("<h2>" + currentThread.attr("threadTitle") + "</h2>");
+                        threadDiv.append("<p>"+"Username: " + currentThread.attr("threadUserName")+"</p>");
                         var backBtn=$("<button>");
                         backBtn.text("Back to forum");
                         backBtn.addClass("back");
@@ -126,10 +135,14 @@
                             var tempStr = [
                                 "<li class='post' id='" + currentPost.id + "'>",
                                 "<span>",
-                                currentPost.title,
+                                "Post Title: " + currentPost.title,
+                                "</span>",
+                                "<br>",
+                                "<span>",
+                                "Username: " + currentPost.username,
                                 "</span>",
                                 "<p>",
-                                currentPost.body,
+                                "Post Body: " + currentPost.body,
                                 "</p>",
                                 "</li>"
                             ].join("");
@@ -182,6 +195,7 @@
         function threadHandler() {
             var newThread = {
                 title: $("#thread").val().trim(),
+                username:$("#userNameHolder").text().trim(),
                 ForumId: forumID,
                 UserId: parseInt($("#userIdHolder").text().trim())
             }
@@ -200,6 +214,7 @@
                 if ($("#post-body").val().trim() !== "" || $("#post-body").val().trim() !== undefined || $("#post-body").val().trim() !== null) {
                     var newPost = {
                         title: $("#post").val().trim(),
+                        username:$("#userNameHolder").text().trim(),
                         body: $("#post-body").val().trim(),
                         UserId: parseInt($("#userIdHolder").text().trim()),
                         ThreadId: theThreadId

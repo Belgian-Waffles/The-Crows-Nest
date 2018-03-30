@@ -26,7 +26,7 @@ module.exports = function(app) {
         }).then(function(dbThread) {
           res.json(dbThread);
         });
-      }); 
+      });
       app.get("/api/threads/title/:title", function(req, res) {
         // Here we add an "include" property to our options in our findOne query
         // We set the value to an array of the models we want to include in a left outer join
