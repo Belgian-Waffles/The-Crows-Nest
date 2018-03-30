@@ -12,12 +12,4 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/home2.html"));
   });
 
-  app.get("/community", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/community.html"));
-  });
-
-  app.get("/community/:community_id", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/community.html"));
-  });
-
 };
