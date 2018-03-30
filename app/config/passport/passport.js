@@ -36,7 +36,7 @@ passport.use('local-signin', new LocalStrategy(
  
         // by default, local strategy uses username and password, we will override with email
  
-        usernameField: 'email',
+        usernameField: 'username',
  
         passwordField: 'password',
  
@@ -45,7 +45,7 @@ passport.use('local-signin', new LocalStrategy(
     },
  
  
-    function(req, email, password, done) {
+    function(req, username, password, done) {
  
         var User = user;
  
@@ -56,14 +56,14 @@ passport.use('local-signin', new LocalStrategy(
         }
         User.findOne({
             where: {
-                email: email
+                username: username
             }
         }).then(function(user) {
  
             if (!user) {
  
                 return done(null, false, {
-                    message: 'Email does not exist'
+                    message: 'Username does not exist'
                 });
  
             }
@@ -98,12 +98,12 @@ passport.use('local-signin', new LocalStrategy(
 
     passport.use('local-signup', new LocalStrategy(
         {
-            usernameField: 'email',
+            usernameField: 'username',
             passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
 
-        function (req, email, password, done) {
+        function (req, username, password, done) {
 
             var generateHash = function (password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
@@ -111,22 +111,23 @@ passport.use('local-signin', new LocalStrategy(
 
             User.findOne({
                 where: {
-                    email: email
+                    username: username
                 }
             }).then(function (user) {
                 if (user) {
                     return done(null, false, {
-                        message: 'That email is already taken'
+                        message: 'That username is already taken'
                     });
                 }
                 else {
                     var userPassword = generateHash(password);
                     var data =
                         {
-                            email: email,
+                            username: username,
                             password: userPassword,
-                            firstname: req.body.firstname,
-                            lastname: req.body.lastname
+                            email: req.body.email,
+                            city: req.body.city,
+                            state: req.body.state
                         };
 
                     User.create(data).then(function (newUser, created) {

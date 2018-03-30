@@ -186,7 +186,170 @@ img {
     margin-left: 6%;
 }
 
+/* Sign-Up Page */
+#cn-logo-signup {
+    width: 40%;
+}
 
+.header-signup {
+    background-color: gray;
+}
+
+.sign-up-form {
+    width: 50%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin: 5% auto;
+}
+
+#signup {
+    font-size: 25px;
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+}
+
+.signup-input {
+    border-width: 0;
+    border-bottom: 1pt solid rgb(43, 43, 44);
+    margin-top: 10%;
+    width: 70%;
+    font-size: 20px;
+    padding-left: 20px;
+    height: 35px;
+}
+
+#city {
+    width: 48%
+}
+
+#state {
+    width: 20%;
+}
+
+#user-submit-btn {
+    font-size: 15px;
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    left: 30%;
+    margin-top: 10%;
+    color: white;
+    background-color: rgb(43, 43, 44);
+    border: 2pt solid rgb(43, 43, 44);
+    transition: .5s;
+}
+
+#user-submit-btn:hover {
+    color: rgb(43, 43, 44);
+    background-color: white;
+    border: 2pt solid rgb(43, 43, 44);
+}
+
+/* Sign-In Page */
+#cn-logo-signin {
+    width: 40%;
+}
+
+.header-signin {
+    background-color: gray;
+}
+
+.sign-in-form {
+    width: 50%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin: 5% auto;
+}
+
+#signin {
+    font-size: 25px;
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+}
+
+.signin-input {
+    border-width: 0;
+    border-bottom: 1pt solid rgb(43, 43, 44);
+    margin-top: 10%;
+    width: 70%;
+    font-size: 20px;
+    padding-left: 20px;
+    height: 35px;
+}
+
+#user-signin-btn {
+    font-size: 15px;
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    left: 30%;
+    margin-top: 10%;
+    color: white;
+    background-color: rgb(43, 43, 44);
+    border: 2pt solid rgb(43, 43, 44);
+    transition: .5s;
+}
+
+#user-signin-btn:hover {
+    color: rgb(43, 43, 44);
+    background-color: white;
+    border: 2pt solid rgb(43, 43, 44);
+}
+
+#user-back-btn {
+    font-size: 15px;
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 2%;
+    color: white;
+    background-color: rgb(43, 43, 44);
+    border: 2pt solid rgb(43, 43, 44);
+    transition: .5s;
+}
+
+#user-back-btn:hover {
+    color: rgb(43, 43, 44);
+    background-color: white;
+    border: 2pt solid rgb(43, 43, 44);
+}
+
+/* Logout Out Pop Up */
+.logout-popup {
+    position: absolute;
+    background-color: rgb(43, 43, 44);
+    color: white;
+    width: 6%;
+    top: 126%;
+    padding: 15px;
+    right: 1%;
+    text-align: center;
+    border-radius: 10px;
+    
+}
+
+.logout-popup:after {
+    content:"";
+    position: absolute;
+    right: 25px;
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent rgb(43, 43, 44) transparent;
+    z-index:9999;
+}
 
 /* Test Logo */
 .logo {
