@@ -4,14 +4,14 @@
  
         "username": "root",
  
-        "password": "Peeti16",
+        "password": "swords",
  
         "database": "sequelize_passport",
  
         "host": "127.0.0.1",
  
         "dialect": "mysql"
- 
+
     },
  
     "test": {
