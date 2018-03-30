@@ -7,13 +7,14 @@ var exphbs = require('express-handlebars')
 var path = require("path");
 var PORT = 5000;
 
+app.use(express.static('public'));
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // For Passport
- 
-app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
+
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
@@ -30,21 +31,21 @@ app.engine('hbs', exphbs({
 }));
 app.set('view engine', '.hbs');
 
- 
-app.get('/', function(req, res) {
- 
+
+app.get("/", function (req, res) {
+
     res.sendFile(path.join(__dirname, "public/home2.html"));
- 
 });
- 
- 
-app.listen(PORT, function(err) {
- 
-    if (!err)
-        console.log("Site is live");
-    else console.log(err)
- 
-});
+
+
+
+    app.listen(PORT, function (err) {
+
+        if (!err)
+            console.log("Site is live");
+        else console.log(err)
+
+    });
 
 //Models
 var models = require("./app/models");
@@ -58,16 +59,16 @@ require('./app/routes/thread.js')(app);
 require('./app/routes/user.js')(app);
 
 //load passport strategies
-require('./app/config/passport/passport.js')(passport, models.User);
-console.log("xxxx" + models.User)
+require('./app/config/passport/passport.js')(passport, models.user);
+
 //Sync Database
-models.sequelize.sync().then(function() {
- 
+models.sequelize.sync().then(function () {
+
     console.log('Nice! Database looks fine');
     console.log("Local Host running on port: " + PORT);
- 
-}).catch(function(err) {
- 
+
+}).catch(function (err) {
+
     console.log(err, "Something went wrong with the Database Update!")
- 
+
 });
