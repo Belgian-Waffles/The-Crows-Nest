@@ -46,6 +46,7 @@ a:visited {
     background-color: rgb(43, 43, 44);
 }
 
+
 .login {
     position: relative;
     display: inline-block;
@@ -206,6 +207,46 @@ img {
 
 #signup {
     font-size: 25px;
+    font-family: 'Cabin', sans-serif;
+    text-transform: uppercase;
+}
+
+/* Username Dashboard Page */
+.username-display {
+    position: relative;
+    display: inline-block;
+    transition: .5s;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(43, 43, 44);
+}
+
+.username-display:hover {
+    color: rgb(43, 43, 44);
+    background: white;
+    text-decoration: none;
+}
+
+/* Community CSS */
+.community {
+    position: relative;
+    margin-left: auto;
+    display: inline-block;
+    transition: .5s;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(43, 43, 44);
+}
+
+.community:hover {
+    color: rgb(43, 43, 44);
+    background: white;
+    text-decoration: none;
+}
+
+#community {
     font-family: 'Cabin', sans-serif;
     text-transform: uppercase;
 }
