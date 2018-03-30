@@ -32,13 +32,39 @@
                 <label for="username">
                     <i class="fas fa-comments"></i>
                 </label>
-                <input class="signup-input" placeholder="Community Name" name="community-name" type="community-name" />
+                <input class="community-input" placeholder="Community Name" name="community-name" type="community-name" />
                 <br>
 
-                <input id="user-submit-btn" type="submit" value="Create Community" />
+                <input id="create-community-btn" type="submit" value="Create Community" />
             </form>
         </div>
     </div>
+
+    <div class="hide">{{id}}</div>
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#create-community-btn").on("click", function(event){
+            event.preventDefault();
+            var communityName = $(".community-input").val().trim();
+            var userId = parseInt($(".hide").text().trim());
+            console.log(communityName);
+            console.log(userId);
+            var communityData = {
+                title: communityName,
+                ownerId: userId
+            }
+
+            $.post("/api/communities", communityData)
+            .then(function(data){
+                console.log("Communities worked")
+                console.log(data);
+                // window.location.replace("/communities/" + data.title);
+            })
+        })
+    })
+
+    </script>
 
 </html>
