@@ -16,6 +16,13 @@ module.exports = function (sequelize, Sequelize) {
       type: Sequelize.INTEGER,
       allowNull: false
     },
+    ownerUsername: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
     'createdAt': {
       type: Sequelize.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
