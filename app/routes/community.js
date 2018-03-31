@@ -28,7 +28,20 @@ module.exports = function(app) {
           res.json(dbCommunity);
         });
       });
-    
+      app.get("/api/communities/title/:title", function(req, res) {
+        // Here we add an "include" property to our options in our findOne query
+        // We set the value to an array of the models we want to include in a left outer join
+        // In this case, just db.Forum
+        console.log("api:"+req.params.title);
+        db.Community.findOne({
+          where: {
+            title: req.params.title
+          },
+          include: [db.Forum]
+        }).then(function(dbCommunity) {
+          res.json(dbCommunity);
+        });
+      });
       app.post("/api/communities", function(req, res) {
         db.Community.create(req.body).then(function(dbCommunity) {
           res.json(dbCommunity);
