@@ -29,7 +29,6 @@
     },
  
     "production": {
-        "use_env_variable": "JAWSDB_URL",
         "username": "DB_USERNAME",
         "password": "DB_PASSWORD",
         "database": "DB_SCHEMA",
