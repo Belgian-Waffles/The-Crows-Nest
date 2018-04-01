@@ -87,7 +87,7 @@
                         for (i = 0; i < forumThreads.length; i++) {
                             var threadElement = $(
                                 [
-                                    "<li class='thread' id='" + forumThreads[i].id + "'",
+                                    "<li class='thread'>",
                                     "<span>",
                                     "Thread Title: " + forumThreads[i].title,
                                     "</span>",
@@ -133,7 +133,7 @@
                         for (i = 0; i < threadPosts.length; i++) {
                             var currentPost = threadPosts[i];
                             var tempStr = [
-                                "<li class='post' id='" + currentPost.id + "'>",
+                                "<li class='post'>",
                                 "<span>",
                                 "Post Title: " + currentPost.title,
                                 "</span>",

@@ -7,7 +7,7 @@ module.exports = function (app, passport) {
     app.get('/signup', authController.signup);
     app.get('/signin', authController.signin);
     app.get('/community', isLoggedIn, authController.community);
-    app.get("/community/:title",isLoggedIn, authController.communityForum)
+    app.get("/communities/:title",isLoggedIn, authController.communityForum)
     app.get('/forum', isLoggedIn, authController.forum);
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/dashboard',
