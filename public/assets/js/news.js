@@ -1,4 +1,4 @@
-// News API call 
+// News API 
 $(document).ready(function () {
     $.ajax({
         url: "https://newsapi.org/v2/top-headlines?country=us&apiKey=79f8ff2b4224420c9ac71e5174746823",
