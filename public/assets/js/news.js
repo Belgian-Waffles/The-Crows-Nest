@@ -48,7 +48,7 @@ $(document).ready(function () {
 
             // Creating new author div
             var newAuthorDiv = $("<div>").addClass("article-author");
-            if (author === null) {
+            if (author === null || author === "") {
                 newAuthorDiv.text("By: Unknown");
             } else {
                 newAuthorDiv.text("By: " + author);
