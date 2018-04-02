@@ -59,8 +59,8 @@ require('./app/routes/thread.js')(app);
 require('./app/routes/user.js')(app);
 
 //load passport strategies
-require('./app/config/passport/passport.js')(passport, models.User);
-console.log("xxxx" + models.User)
+require('./app/config/passport/passport.js')(passport, models.user);
+
 //Sync Database
 models.sequelize.sync().then(function () {
 

@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css" media="screen" title="no title">
-    <link rel="stylesheet" href="assets/css/reset.css" media="screen" title="no title">
+    <link rel="stylesheet" href="/assets/css/styles.css" media="screen" title="no title">
+    <link rel="stylesheet" href="/assets/css/reset.css" media="screen" title="no title">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Allan:700|Cabin:500,700|Josefin+Sans:700" rel="stylesheet">
@@ -20,13 +20,17 @@
     <div class="container-fluid">
         <div class="row header-signup">
             <div class="logo">
-                <img src="assets/images/cn-01.svg " alt="Crows Nest" id="cn-logo-signup">
+                <img src="/assets/images/cn-01.svg " alt="Crows Nest" id="cn-logo-signup">
             </div>
         </div>
     </div>
-
+    <div>
+        <a href="/community">
+            <button id="user-back-btn">Back</button>
+        </a>
+    </div>
     <div class="container-fluid news-container">
-        <div>
+        <div class="forum-title">
             <h1>
                 Forum
             </h1>
@@ -53,8 +57,8 @@
             <button type="submit" class="btn btn-primary submit">Submit</button>
         </form>
 
-        <div class="d-none" id="userNameHolder">{{username}}</div>
-        <div class="d-none" id="userIdHolder">{{id}}</div>
+        <div class="hide" id="userNameHolder">{{username}}</div>
+        <div class="hide" id="userIdHolder">{{id}}</div>
     </div>
 </body>
 {{!--
@@ -63,15 +67,16 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var url = window.location.search;
-        var communityID;
+        var communityTitle;
         var currentThread;
         var forumID;
-        if (url.indexOf("?community_id=") !== -1) {
-            communityID = url.split("=")[1];
+        if (url.indexOf("?name=") !== -1) {
+            communityTitle = url.substring(url.indexOf("=")+1);
         }
         else {
-            communityID = 1;
+            communityTitle = "communities test 1";
         }
+        console.log(communityTitle);
         setForum();
         $(document).on("click", ".thread", function (event) {
             event.preventDefault();
@@ -79,11 +84,21 @@
             showThread();
         });
         $(document).on("click", ".submit", postToForum);
+        $(document).on("click",".back",function(event){
+            event.preventDefault();
+            location.reload(true);
+        })
         function setForum() {
-            $.get("/api/communities/" + communityID, function (data) {
+            $.get("/api/communities/title/" + communityTitle, function (data) {
                 $(".forum").empty();
+                console.log(data);
+                if(data==null||data==undefined){
+                    window.location.replace("/community");
+                }
                 var forum = data.Forum;
                 forumID = forum.id;
+                var forumDiv = $("<div>");
+                forumDiv.append("<h2>" + forum.title + "</h2>")
                 var forumThreads = [];
                 $.get("/api/forums/" + forumID, function (data) {
                     forumThreads = data.Threads;
@@ -92,50 +107,72 @@
                         for (i = 0; i < forumThreads.length; i++) {
                             var threadElement = $(
                                 [
-                                    "<li class='thread' id='" + forumThreads[i].id + "'",
+                                    "<li class='thread'>",
                                     "<span>",
-                                    forumThreads[i].title,
+                                    "Thread Title: " + forumThreads[i].title,
+                                    "</span>",
+                                    "<br>",
+                                    "<span>",
+                                    "Username: " + forumThreads[i].username,
                                     "</span>",
                                     "</li>"
                                 ].join(""));
                             threadElement.attr("threadID", forumThreads[i].id);
                             threadElement.attr("threadTitle", forumThreads[i].title);
+                            threadElement.attr("threadUserName", forumThreads[i].username);
                             rowsToAdd.push(threadElement);
+                            console.log(threadElement);
                         }
-                        $(".forum").prepend(rowsToAdd);
+                        forumDiv.append(rowsToAdd);
+                        $(".forum").prepend(forumDiv);
                     }
                     else {
-                        throw new Error("fail set forum");
+                        $(".forum").append($("<h3>No threads found. Try adding some.</h3>"))
                     }
                 });
-            });
+            }).fail(function(err){
+                console.log(err);
+            })
         };
         function showThread() {
             $(".forum").empty();
             if (currentThread) {
                 $("#thread").val(currentThread.attr("threadTitle"));
-                //$("#thread").data("thread-id", currentThread.id);
                 var threadPosts;
+                console.log(currentThread);
                 $.get("/api/threads/" + currentThread.attr("threadID"), function (data) {
                     threadPosts = data.Posts;
+                    console.log(threadPosts)
                     var rowsToAdd = [];
                     if (threadPosts.length > 0) {
+                        var threadDiv = $("<div>");
+                        threadDiv.append("<h2> Thread Title: " + currentThread.attr("threadTitle") + "</h2>");
+                        threadDiv.append("<p>"+"Username: " + currentThread.attr("threadUserName")+"</p>");
+                        var backBtn=$("<button>");
+                        backBtn.text("Back to forum");
+                        backBtn.addClass("back");
+                        threadDiv.append(backBtn);
                         for (i = 0; i < threadPosts.length; i++) {
                             var currentPost = threadPosts[i];
                             var tempStr = [
-                                "<li class='post' id='" + currentPost.id + "'>",
+                                "<li class='post'>",
                                 "<span>",
-                                currentPost.title,
+                                "Post Title: " + currentPost.title,
+                                "</span>",
+                                "<br>",
+                                "<span>",
+                                "Username: " + currentPost.username,
                                 "</span>",
                                 "<p>",
-                                currentPost.body,
+                                "Post Body: " + currentPost.body,
                                 "</p>",
                                 "</li>"
                             ].join("");
                             var postElement = $(tempStr);
                             rowsToAdd.push(postElement);
                         }
-                        $(".forum").prepend(rowsToAdd);
+                        threadDiv.append(rowsToAdd);
+                        $(".forum").prepend(threadDiv);
                     }
                     else {
                         throw new Error("fail show thread");
@@ -150,40 +187,67 @@
             event.preventDefault();
             if (!currentThread) {
                 if ($("#thread").val().trim() !== "" || $("#thread").val().trim() !== undefined || $("#thread").val().trim() !== null) {
-                    var newThread = {
-                        title: $("#thread").val().trim(),
-                        ForumId: forumID,
-                        UserId: parseInt($("#userIdHolder").text().trim())
-                    }
-                    console.log(newThread);
-                    $.post("/api/threads", newThread)
-                        .then(function (data) {
-                            console.log(data);
-                            postHandler(data.id);
-                        });
+                    threadHandler();
                 }
                 else {
                     throw new Error("No thread title")
                 }
             }
             else {
-                postHandler(currentThread.attr("threadID"));
+                if (currentThread.attr("threadTitle") !== $("#thread").val().trim()) {
+                    console.log("new Case")
+                    $.get("/api/threads/title/" + $("#thread").val().trim())
+                        .done(function (data) {
+                            console.log(data);
+                            if (data == null || data == undefined) {
+                                threadHandler();
+                            }
+                            else {
+                                currentThread.attr("threadID", data.id);
+                                currentThread.attr("threadTitle", data.title);
+                                postHandler(data.id);
+                            }
+                        })
+                }
+                else {
+                    postHandler(currentThread.attr("threadID"));
+                }
             }
         };
+        function threadHandler() {
+            var newThread = {
+                title: $("#thread").val().trim(),
+                username:$("#userNameHolder").text().trim(),
+                ForumId: forumID,
+                UserId: parseInt($("#userIdHolder").text().trim())
+            }
+            console.log(newThread);
+            $.post("/api/threads", newThread)
+                .then(function (data) {
+                    console.log(data);
+                    currentThread = $(data);
+                    currentThread.attr("threadID", data.id);
+                    currentThread.attr("threadTitle", data.title);
+                    currentThread.attr("threadUserName", data.username);
+                    postHandler(data.id);
+                });
+        }
         function postHandler(theThreadId) {
             if ($("#post").val().trim() !== "" || $("#post").val().trim() !== undefined || $("#post").val().trim() !== null) {
                 if ($("#post-body").val().trim() !== "" || $("#post-body").val().trim() !== undefined || $("#post-body").val().trim() !== null) {
                     var newPost = {
                         title: $("#post").val().trim(),
+                        username:$("#userNameHolder").text().trim(),
                         body: $("#post-body").val().trim(),
                         UserId: parseInt($("#userIdHolder").text().trim()),
                         ThreadId: theThreadId
                     }
-                    $.post("/api/posts", newPost);
+                    $.post("/api/posts", newPost).then(showThread);
                 }
             }
         }
     });
 </script>
+
 
 </html>
