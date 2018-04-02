@@ -4,9 +4,9 @@
  
         "username": "root",
  
-        "password": "Peeti16",
+        "password": "",
  
-        "database": "tcn_db2",
+        "database": "sequelize_passport",
  
         "host": "127.0.0.1",
  
@@ -29,11 +29,19 @@
     },
  
     "production": {
+
  
+<<<<<<< HEAD
         "use_env_variable":"JAWSDB_URL",
  
         "dialect": "mysql"
  
+=======
+        "dialect": "mysql",
+
+        "use_env_variable": "JAWSDB_URL"
+
+>>>>>>> origin/master
     }
  
 }
