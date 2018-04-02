@@ -197,7 +197,7 @@ img {
 }
 
 .header-signup {
-    background-color: gray;
+    background-color: #c5c5c5;
 }
 
 .sign-up-form {
@@ -489,6 +489,12 @@ img {
     border-color: transparent transparent rgb(43, 43, 44) transparent;
     z-index:9999;
 }
+
+/* Forum Page */
+.forum-title {
+    font-family: 'Cabin', sans-serif;
+}
+
 
 /* Test Logo */
 .logo {
