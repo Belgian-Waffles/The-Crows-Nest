@@ -1,4 +1,4 @@
-// Weather API call 
+// Weather API
 $(document).ready(function () {
     var Weather = function (state, city) {
     this.State = state;

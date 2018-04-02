@@ -5,7 +5,7 @@ describe("The-Crows-Nest registration", function() {
     return nightmare
       .goto("http://localhost:5000/signup")
       .type("#txtUsername", "test")
-      .type("#txtPassword", "12345")
+      .type("#txtPassword", "test")
       .type("#txtEmail", "test@test.com")
       .type("#txtState", "CA")
       .type("#txtCity", "City")
