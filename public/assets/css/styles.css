@@ -113,6 +113,7 @@ a:visited {
     background-color: rgb(241, 241, 241);
     padding: 0 2% 2% 2%;
 }
+
 .article {
     background-color: white;
     border-radius: 10px;
@@ -196,7 +197,7 @@ img {
 }
 
 .header-signup {
-    background-color: gray;
+    background-color: #c5c5c5;
 }
 
 .sign-up-form {
@@ -297,6 +298,64 @@ img {
     border: 2pt solid rgb(43, 43, 44);
 }
 
+.community-box {
+    background-color: white;
+    border-radius: 10px;
+    font-size: 25px;
+    width: 100%;
+    margin-left: 2%;
+    margin-right: 2%;
+    position: relative;
+    display: inline-block;
+    margin-top: 2%;
+    transform: scale(.96);
+    box-shadow: none;
+    vertical-align: top;
+    transition: .2s;
+}
+
+.community-box:hover {
+    transform: scale(1);
+    box-shadow: 7px 10px 18px 1px rgba(173, 173, 173, 0.5);
+}
+
+.community-title {
+    font-family: 'Cabin', sans-serif;
+    font-weight: 600;
+    text-align: left;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    background-color: rgb(83, 139, 161);
+    color: white;
+    /* clip-path: polygon(0 0, 50% 0%, 40% 100%, 0 100%); */
+}
+
+.community-container {
+    background-color: rgb(241, 241, 241);
+    padding: 0 2% 2% 2%;
+    display: block;
+    text-align: center;
+}
+
+.community-author {
+    padding: 15px;
+    font-family: 'Cabin', sans-serif;
+    font-size: 12px;
+    text-align: right;
+}
+
+.add-community {
+    width: 50%;
+    display: inline-block;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    margin: 5% auto;
+}
+
 
 
 #city {
@@ -387,6 +446,7 @@ img {
     font-size: 15px;
     font-family: 'Cabin', sans-serif;
     text-transform: uppercase;
+    display: block;
     padding: 10px;
     border-radius: 10px;
     position: relative;
@@ -429,6 +489,12 @@ img {
     border-color: transparent transparent rgb(43, 43, 44) transparent;
     z-index:9999;
 }
+
+/* Forum Page */
+.forum-title {
+    font-family: 'Cabin', sans-serif;
+}
+
 
 /* Test Logo */
 .logo {
