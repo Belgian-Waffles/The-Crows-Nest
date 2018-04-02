@@ -78,7 +78,7 @@
                     console.log("Communities worked")
                     console.log(data);
                     var forumData = {
-                        title: data.title + "forum",
+                        title: data.title + " Forum",
                         CommunityId: data.id
                     }
                     $.post("/api/forums", forumData)

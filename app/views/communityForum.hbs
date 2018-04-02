@@ -13,6 +13,16 @@
     <link href="https://fonts.googleapis.com/css?family=Allan:700|Cabin:500,700|Josefin+Sans:700" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ"
         crossorigin="anonymous"></script>
+    <style>
+        li:{
+            background-color: white;
+            margin: 10px;
+        }
+        .thread:{
+            background-color: white;
+            margin: 10px;
+        }
+    </style>
     <title>Your Community</title>
 </head>
 
@@ -120,6 +130,7 @@
                             threadElement.attr("threadID", forumThreads[i].id);
                             threadElement.attr("threadTitle", forumThreads[i].title);
                             threadElement.attr("threadUserName", forumThreads[i].username);
+                            $(".thread").css("background-color","white");
                             rowsToAdd.push(threadElement);
                             console.log(threadElement);
                         }
@@ -172,6 +183,7 @@
                             rowsToAdd.push(postElement);
                         }
                         threadDiv.append(rowsToAdd);
+                        $("li").css("background-color","white");
                         $(".forum").prepend(threadDiv);
                     }
                     else {
