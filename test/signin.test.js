@@ -1,11 +1,11 @@
 var Nightmare = require("nightmare");
 var nightmare = Nightmare({ show: true });
 describe("The-Crows-Nest login", function() {
-  it("If can be loged in sucessfully?", function(done) {
+  it("If can be logged in sucessfully?", function(done) {
     return nightmare
       .goto("http://localhost:5000/signin")
-      .type("#txtUsername", "test")
-      .type("#txtPassword", "12345")
+      .type("#txtUsername", "BelgianWaffles")
+      .type("#txtPassword", "crow1")
       .click("#user-signin-btn")
       .screenshot("./test/screenshot/signup.png")
       .evaluate(function() {

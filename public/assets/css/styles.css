@@ -495,6 +495,12 @@ img {
     font-family: 'Cabin', sans-serif;
 }
 
+.post-container {
+    background-color: rgb(241, 241, 241);
+    padding: 2% 2% 2% 2%;
+    margin-top: 3%;
+}
+
 
 /* Test Logo */
 .logo {
