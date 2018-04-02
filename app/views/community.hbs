@@ -25,14 +25,17 @@
         </div>
     </div>
 
-    <div class="container-fluid news-container">
+    <div class="container-fluid community-container">
         <a href="/dashboard">
-            <button id="user-back-btn">Go Back</button>
+            <button id="user-back-btn"> <a href="/dashboard">Go Back</a></button>
         </a>
-        <div class="communitiesHolder">
+        <div class="col-md-10 col-md-offset-1 communitiesHolder">
 
         </div>
-        <div class="row sign-up-form">
+
+        {{!-- <div class="col-md-10 news-articles communitiesHolder">
+            </div> --}}
+        <div class="row add-community">
             <form id="signup" name="signup" method="post" action="/signup">
                 <label for="username">
                     <i class="fas fa-comments"></i>
@@ -52,7 +55,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         showCommunities();
-        $(document).on("click",".communityElement",function(event){
+        $(document).on("click",".community-box",function(event){
             event.preventDefault();
             console.log("going")
             var comName = $(this).attr("comTitle");
@@ -90,24 +93,29 @@
                     console.log(data,data.length);
                     var rowsToAdd = [];
                     for (i = 0; i < data.length; i++) {
-                        var communityElement = $(
-                            [
-                                "<li class='communityElement'>",
-                                "<span>",
-                                "Community Title: " + data[i].title,
-                                "</span>",
-                                "<br>",
-                                "<span>",
-                                "Owner Username: " + data[i].ownerUsername,
-                                "</span>",
-                                "</li>"
-                            ].join(""));
-                        communityElement.attr("comTitle",data[i].title);
-                        rowsToAdd.push(communityElement);
+
+                        
+
+                         var newCommunity = $("<div>").addClass("community-box");
+
+                        // Creating new title div
+                        var newTitleDiv = $("<div>").addClass("community-title");
+                        newTitleDiv.text(data[i].title);
+                        $(newCommunity).append(newTitleDiv);
+
+                        // Creating new owner div
+                        var newOwnerDiv = $("<div>").addClass("community-author");
+
+                        newOwnerDiv.text("Owner: " + data[i].ownerUsername);
+                        $(newCommunity).append(newOwnerDiv);
+                        
+                        $(".communitiesHolder").append(newCommunity);
+
+                        newCommunity.attr("comTitle", data[i].title);
+                       // rowsToAdd.push(newCommunity);
+
                     }
-                    $(".communitiesHolder").append("<h2>Communities</h2>");
-                    console.log(rowsToAdd);
-                    $(".communitiesHolder").append(rowsToAdd);
+                    
                 }
                 else {
                     $(".communitiesHolder").text("No Communities found. Why don't you make some?");
