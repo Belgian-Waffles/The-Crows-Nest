@@ -10,7 +10,7 @@ $(document).ready(function () {
        }
        // uncomment in production it's in .env 
         //var queryUrl="http://api.wunderground.com/api/"+process.env.WEATHER_API_KEY+"/forecast/q/"+this.State+"/"+concatenateCity(this.City)+".json";
-        var queryUrl = "http://api.wunderground.com/api/" + "f3076c2b38004fb8" + "/forecast/q/" + this.State + "/" + concatenateCity(this.City) + ".json";
+        var queryUrl = "https://api.wunderground.com/api/" + "f3076c2b38004fb8" + "/forecast/q/" + this.State + "/" + concatenateCity(this.City) + ".json";
         $.ajax({
             type: "GET",
             url: queryUrl,
